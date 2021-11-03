@@ -22,4 +22,15 @@ class MainViewModel: ViewModel() {
         val list = getShopListInteractor.getShopList()
         shopList.value = list
     }
+
+    fun deleteShopItem(shopItem: ShopItem) {
+        deleteShopItemInteractor.deleteShopItem(shopItem)
+        getShopList()
+    }
+
+    fun changeEnableState(shopItem: ShopItem) {
+        val newItem = shopItem.copy(available = !shopItem.available)
+        editShopItemInteractor.editShopItem(newItem)
+        getShopList()
+    }
 }
