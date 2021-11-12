@@ -99,4 +99,3 @@ class ShopItemViewModel : ViewModel() {
         _shouldCloseScreen.value = Unit
     }
 }
-

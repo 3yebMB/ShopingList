@@ -8,6 +8,9 @@ import dev.m13d.shopinglist.domain.ShopItem
 
 class ShopListAdapter : ListAdapter<ShopItem, ShopItemViewHolder>(ShopItemDiffCallback()) {
 
+    var onShopItemLongClickListener: ((ShopItem) -> Unit)? = null
+    var onShopItemClickListener: ((ShopItem) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShopItemViewHolder {
         val layout = when (viewType) {
             VIEW_TYPE_ENABLED -> R.layout.item_shop_enabled
@@ -30,9 +33,6 @@ class ShopListAdapter : ListAdapter<ShopItem, ShopItemViewHolder>(ShopItemDiffCa
             true
         }
     }
-
-    var onShopItemClickListener: ((ShopItem) -> Unit)? = null
-    var onShopItemLongClickListener: ((ShopItem) -> Unit)? = null
 
     override fun getItemViewType(position: Int): Int {
         val item = getItem(position)

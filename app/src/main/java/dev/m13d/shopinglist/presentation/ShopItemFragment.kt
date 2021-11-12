@@ -130,7 +130,7 @@ class ShopItemFragment : Fragment() {
         viewModel.getShopItem(shopItemId)
         viewModel.shopItem.observe(viewLifecycleOwner) {
             etName.setText(it.name)
-            etCount.setText(it.count)
+            etCount.setText(it.count.toString())
         }
         buttonSave.setOnClickListener {
             viewModel.editShopItem(etName.text?.toString(), etCount.text?.toString())
