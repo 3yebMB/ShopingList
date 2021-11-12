@@ -13,7 +13,7 @@ import com.google.android.material.textfield.TextInputLayout
 import dev.m13d.shopinglist.R
 import dev.m13d.shopinglist.domain.ShopItem
 
-class ShopItemActivity : AppCompatActivity(R.layout.activity_shop_item) {
+class ShopItemActivity : AppCompatActivity(R.layout.activity_shop_item), ShopItemFragment.OnEditingFinishedListener {
 
     private var screenMode = MODE_UNKNOWN
     private var shopItemId = ShopItem.UNDEFINED_ID
@@ -22,7 +22,9 @@ class ShopItemActivity : AppCompatActivity(R.layout.activity_shop_item) {
         super.onCreate(savedInstanceState)
 //        setContentView(R.layout.activity_shop_item)
         parseIntent()
-        setupLaunchMode()
+        if (savedInstanceState == null) {
+            setupLaunchMode()
+        }
     }
 
     private fun setupLaunchMode() {
@@ -32,7 +34,7 @@ class ShopItemActivity : AppCompatActivity(R.layout.activity_shop_item) {
             else -> throw RuntimeException("Unknown screen mode $screenMode")
         }
         supportFragmentManager.beginTransaction()
-            .add(R.id.shop_item_container, fragment)
+            .replace(R.id.shop_item_container, fragment)
             .commit()
     }
 
@@ -73,5 +75,9 @@ class ShopItemActivity : AppCompatActivity(R.layout.activity_shop_item) {
             intent.putExtra(EXTRA_SHOP_ITEM_ID, shopItemId)
             return intent
         }
+    }
+
+    override fun onEditingFinished() {
+        finish()
     }
 }
