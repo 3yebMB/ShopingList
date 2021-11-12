@@ -3,17 +3,12 @@ package dev.m13d.shopinglist.presentation
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.widget.Button
-import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
-import com.google.android.material.textfield.TextInputLayout
 import dev.m13d.shopinglist.R
 import dev.m13d.shopinglist.domain.ShopItem
 
-class ShopItemActivity : AppCompatActivity(R.layout.activity_shop_item), ShopItemFragment.OnEditingFinishedListener {
+class ShopItemActivity : AppCompatActivity(R.layout.activity_shop_item),
+    ShopItemFragment.OnEditingFinishedListener {
 
     private var screenMode = MODE_UNKNOWN
     private var shopItemId = ShopItem.UNDEFINED_ID

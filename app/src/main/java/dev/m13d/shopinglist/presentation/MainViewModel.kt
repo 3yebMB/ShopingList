@@ -1,6 +1,5 @@
 package dev.m13d.shopinglist.presentation
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import dev.m13d.shopinglist.data.ShopListRepositoryImpl
 import dev.m13d.shopinglist.domain.DeleteShopItemInteractor
@@ -8,7 +7,7 @@ import dev.m13d.shopinglist.domain.EditShopItemInteractor
 import dev.m13d.shopinglist.domain.GetShopIListInteractor
 import dev.m13d.shopinglist.domain.ShopItem
 
-class MainViewModel: ViewModel() {
+class MainViewModel : ViewModel() {
 
     private val repository = ShopListRepositoryImpl
 

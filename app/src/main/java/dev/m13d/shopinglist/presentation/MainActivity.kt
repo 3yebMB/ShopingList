@@ -11,7 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dev.m13d.shopinglist.R
 
-class MainActivity : AppCompatActivity(R.layout.activity_main), ShopItemFragment.OnEditingFinishedListener {
+class MainActivity : AppCompatActivity(R.layout.activity_main),
+    ShopItemFragment.OnEditingFinishedListener {
 
     private lateinit var viewModel: MainViewModel
     private lateinit var shopListAdapter: ShopListAdapter

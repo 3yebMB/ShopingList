@@ -8,7 +8,6 @@ import dev.m13d.shopinglist.domain.AddShopItemInteractor
 import dev.m13d.shopinglist.domain.EditShopItemInteractor
 import dev.m13d.shopinglist.domain.GetShopItemInteractor
 import dev.m13d.shopinglist.domain.ShopItem
-import java.lang.Exception
 
 class ShopItemViewModel : ViewModel() {
 

@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.ListAdapter
 import dev.m13d.shopinglist.R
 import dev.m13d.shopinglist.domain.ShopItem
 
-
 class ShopListAdapter : ListAdapter<ShopItem, ShopItemViewHolder>(ShopItemDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShopItemViewHolder {
