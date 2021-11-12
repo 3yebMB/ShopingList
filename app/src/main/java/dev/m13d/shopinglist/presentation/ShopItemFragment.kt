@@ -18,6 +18,7 @@ import dev.m13d.shopinglist.domain.ShopItem
 
 class ShopItemFragment : Fragment() {
 
+    private lateinit var onEditingFinishedListener: OnEditingFinishedListener
     private lateinit var viewModel: ShopItemViewModel
 
     private lateinit var tilName: TextInputLayout
@@ -52,6 +53,14 @@ class ShopItemFragment : Fragment() {
 
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is OnEditingFinishedListener)
+            onEditingFinishedListener = context
+        else
+            throw RuntimeException("Activity doesn't implement OnEditingFinishedListener")
+    }
+
     private fun observeViewModel() {
         viewModel.errorInputName.observe(viewLifecycleOwner) {
             val message = if (it) {
@@ -70,7 +79,7 @@ class ShopItemFragment : Fragment() {
             tilCount.error = message
         }
         viewModel.shouldCloseScreen.observe(viewLifecycleOwner) {
-            activity?.onBackPressed()
+            onEditingFinishedListener.onEditingFinished()
         }
     }
 
@@ -153,6 +162,11 @@ class ShopItemFragment : Fragment() {
             }
             shopItemId = args.getInt(SHOP_ITEM_ID, ShopItem.UNDEFINED_ID)
         }
+    }
+
+    interface OnEditingFinishedListener {
+
+        fun onEditingFinished()
     }
 
     companion object {
